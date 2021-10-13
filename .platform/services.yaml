@@ -1,0 +1,95 @@
+# The name given to the MariaDB/MySQL service (lowercase alphanumeric only).
+db:
+    # The type of your service (mysql), which uses the format
+    # 'type:version'. Be sure to consult the MariaDB/MySQL documentation
+    # (https://docs.platform.sh/configuration/services/mysql.html#supported-versions)
+    # when choosing a version. If you specify a version number which is not available,
+    # the CLI will return an error.
+    type: mysql:10.4
+    # The disk attribute is the size of the persistent disk (in MB) allocated to the service.
+    disk: 256
+
+# The name given to the Solr service (lowercase alphanumeric only).
+searchsolr:
+    # The type of your service (solr), which uses the format
+    # 'type:version'. Be sure to consult the Solr documentation
+    # (https://docs.platform.sh/configuration/services/solr.html#supported-versions)
+    # when choosing a version. If you specify a version number which is not available,
+    # the CLI will return an error.
+    type: solr:8.6
+    # The disk attribute is the size of the persistent disk (in MB) allocated to the service.
+    disk: 256
+
+# The name given to the Headless Chrome service (lowercase alphanumeric only).
+headlessbrowser:
+    # The type of your service (chrome-headless), which uses the format
+    # 'type:version'. Be sure to consult the Headless Chrome documentation
+    # (https://docs.platform.sh/configuration/services/headless-chrome.html#supported-versions)
+    # when choosing a version. If you specify a version number which is not available,
+    # the CLI will return an error.
+    type: chrome-headless:73
+
+# The name given to the MariaDB/MySQL service (lowercase alphanumeric only).
+db:
+    # The type of your service (mariadb), which uses the format
+    # 'type:version'. Be sure to consult the MariaDB/MySQL documentation
+    # (https://docs.platform.sh/configuration/services/mysql.html#supported-versions)
+    # when choosing a version. If you specify a version number which is not available,
+    # the CLI will return an error.
+    type: mariadb:10.5
+    # The disk attribute is the size of the persistent disk (in MB) allocated to the service.
+    disk: 256
+
+# The name given to the Varnish service (lowercase alphanumeric only).
+varnish:
+    # The type of your service (varnish), which uses the format
+    # 'type:version'. Be sure to consult the Varnish documentation
+    # (https://docs.platform.sh/configuration/services/varnish.html#supported-versions)
+    # when choosing a version. If you specify a version number which is not available,
+    # the CLI will return an error.
+    type: varnish:6.3
+    # The 'relationships' block defines a relationship ('application') to the application
+    # container ('app') using the 'http' endpoint, and is what allows Varnish to
+    # talk to the application container.
+    relationships:
+        application: 'app:http'
+    # The 'configuration' block is required, and references the VCL file (config.vcl) which
+    # is relative to the .platform directory.
+    configuration:
+        vcl: !include
+            type: string
+            path: config.vcl
+
+# The name given to the Network Storage service (lowercase alphanumeric only).
+files:
+    # The type of your service (network-storage), which uses the format
+    # 'type:version'. Be sure to consult the Network Storage documentation
+    # (https://docs.platform.sh/configuration/services/network-storage.html#supported-versions)
+    # when choosing a version. If you specify a version number which is not available,
+    # the CLI will return an error.
+    type: network-storage:1.0
+    # The disk attribute is the size of the persistent disk (in MB) allocated to the service.
+    disk: 256
+
+# The name given to the Elasticsearch service (lowercase alphanumeric only).
+searchelastic:
+    # The type of your service (elasticsearch), which uses the format
+    # 'type:version'. Be sure to consult the Elasticsearch documentation
+    # (https://docs.platform.sh/configuration/services/elasticsearch.html#supported-versions)
+    # when choosing a version. If you specify a version number which is not available,
+    # the CLI will return an error.
+    type: elasticsearch:7.9
+    # The disk attribute is the size of the persistent disk (in MB) allocated to the service.
+    disk: 256
+
+# The name given to the RabbitMQ service (lowercase alphanumeric only).
+queuerabbit:
+    # The type of your service (rabbitmq), which uses the format
+    # 'type:version'. Be sure to consult the RabbitMQ documentation
+    # (https://docs.platform.sh/configuration/services/rabbitmq.html#supported-versions)
+    # when choosing a version. If you specify a version number which is not available,
+    # the CLI will return an error.
+    type: rabbitmq:3.8
+    # The disk attribute is the size of the persistent disk (in MB) allocated to the service.
+    disk: 512
+
